@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace shoppingcart;
+﻿namespace shoppingcart;
 public readonly record struct ShoppingCartId(Guid shoppingCartId) 
 {
     public static ShoppingCartId NewId => new(Guid.NewGuid());
@@ -23,23 +17,9 @@ internal class ShoppingCart
     }
 
     public ShoppingCartId ShoppingCartId { get => _shoppingCartId; }
-
-    public List<Item> Items
-    {
-        get
-        {           
-            return new List<Item>(_items);
-        }     
-    }
-
-    public decimal TotalPrice
-    {
-        get
-        {            
-            return _items.Sum(item => item.Price);            
-        }      
-    }
-
+    public List<Item> Items => new(_items);   
+    public decimal TotalPrice => _items.Sum(item => item.Price);
+   
     public void AddItem(Item item)
     {
         if (item == null)

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace shoppingcart;
+﻿namespace shoppingcart;
 public readonly record struct ItemId(Guid itemId)
 {
     public static ItemId NewId => new(Guid.NewGuid());
@@ -16,7 +10,6 @@ internal class Item
     private readonly ItemId _itemId = ItemId.NewId;
     private string? _itemName;
     private decimal _price;
-
 
     public Item(string itemName, decimal price, uint quantityInStock)
     {
